@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #miCanva{
+            background: blue;
+            border: dotted 2px red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("miCanva");
+            if(canvas.getContext){
+                var ctx =canvas.getContext("2d")
+                if(ctx){
+                    alert('Bienvenidos al CANVAS');
+                }
+                else {
+                    alert('Error al crear el contexto');
+                }
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva</title>
+</head>
+<body>
+    <canvas id="miCanva" width="500" height="300">
+        Tu navegador no soporta canvas
+    </canvas>
+</body>
+</html>

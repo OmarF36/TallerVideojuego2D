@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #miCanva{
+            background: blue;
+            border: dotted 2px red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("miCanva");
+            if(canvas && canvas.getContext){
+                var ctx = canvas.getContext("2d")
+                if(ctx){
+                    ctx.lineWidth = 30;
+                    ctx.strokeStyle = "red";
+                    ctx.beginPath();
+                    // ctx.lineJoin = "bevel";
+                    // ctx.lineJoin = "mitter";
+                    ctx.lineJoin = "round";
+                    ctx.moveTo(75,150);
+                    ctx.lineTo(125,50);
+                    ctx.lineTo(175,50);
+                    ctx.lineTo(225,150);
+                    ctx.lineTo(150,275);
+                    ctx.fill();
+                    ctx.closePath();
+                    ctx.stroke();
+                    
+                }
+                else {
+                    alert('Error al crear el contexto');
+                }
+            }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva</title>
+</head>
+<body>
+    <canvas id="miCanva" width="500" height="300">
+        Tu navegador no soporta canvas
+    </canvas>
+</body>
+</html>

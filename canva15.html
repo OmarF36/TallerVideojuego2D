@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #miCanva{
+            background: blue;
+            border: dotted 2px red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("miCanva");
+            if(!canvas || !canvas.getContext){
+                alert('Canvas no disponible');
+                return;
+            }
+            var ctx = canvas.getContext("2d");
+
+            var bola = new Image();
+            bola.src = "4892438.png";
+
+            var x = 0;
+            var y = 150;
+            var dx = 2;
+            var dy = 1;
+            var ancho = 10;
+            var alto = 10;
+
+            bola.onload = function() {
+                requestAnimationFrame(mueve);
+            };
+
+            if(bola.complete && bola.naturalWidth !== 0) {
+                requestAnimationFrame(mueve);
+            }
+
+            function mueve() {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage(bola,x,y,ancho,alto);
+                x += dx;
+                y += dy;
+
+                if (x + ancho > canvas.width || x < 0) dx *= -1;
+                if (y + alto > canvas.height || y < 0) dy *= -1;
+
+                requestAnimationFrame(mueve);
+
+            }
+
+
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva</title>
+</head>
+<body>
+    <canvas id="miCanva" width="500" height="300">
+        Tu navegador no soporta canvas
+    </canvas>
+</body>
+</html>
